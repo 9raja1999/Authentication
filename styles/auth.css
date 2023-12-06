@@ -1,0 +1,14 @@
+.auth-container{
+    width: 100%;
+    border: 1px solid grey;
+    border-radius: 6px;
+    padding: 50px 24px;
+    margin-top: 50px;
+}
+.auth-container form{
+    width: 100%;
+}
+.auth-container form h1.title{
+    text-align: center;
+    margin-bottom: 10px;
+}
