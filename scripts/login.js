@@ -1,13 +1,18 @@
 import {
     auth,
     signInWithEmailAndPassword,
-    sendPasswordResetEmail
+    sendPasswordResetEmail,
+    signInWithPopup,
+    googleProvider,
+    githubProvider
 } from '../firebase/firebaseConfig.js'
 
 
 var email = document.getElementById('email')
 var password = document.getElementById('pass')
 var loginForm = document.getElementById('loginForm')
+var googleLoginBtn = document.getElementById('google-login')
+var githubLoginBtn = document.getElementById('github-login')
 
 window.onload = function () {
     var user = JSON.parse(localStorage.getItem('user'))
@@ -16,10 +21,43 @@ window.onload = function () {
     }
 }
 
+googleLoginBtn.addEventListener(
+    'click',
+    handleGoogleAuth
+)
+
+githubLoginBtn.addEventListener(
+    'click',
+    handleGithubLogin
+)
+
 loginForm.addEventListener(
     'submit',
     handleLogin
 )
+
+function handleGoogleAuth() {
+    signInWithPopup(auth, googleProvider)
+        .then((result) => {
+            localStorage.setItem('user', JSON.stringify(result.user))
+            window.location.pathname = "/"
+        })
+        .catch((error) => {
+            console.error("error", error);
+        })
+    }
+    
+    function handleGithubLogin(){
+        console.log(":")
+        signInWithPopup(auth, githubProvider)
+            .then((result) => {
+                localStorage.setItem('user', JSON.stringify(result.user))
+                window.location.pathname = "/"
+            })
+            .catch((error) => {
+                console.error("error", error);
+            })
+    }
 
 
 function handleLogin(e) {
