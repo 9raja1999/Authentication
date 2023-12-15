@@ -1,10 +1,10 @@
-import { getStorage, Sref, uploadBytesResumable, getDownloadURL, ref , db,push , set} from './firebase/firebaseConfig.js'
+import { storage, Sref, uploadBytesResumable, getDownloadURL, ref, db, push, set } from './firebase/firebaseConfig.js'
 
 window.onload = function () {
-    // var user = JSON.parse(localStorage.getItem('user'))
-    // if (user === null) {
-    //     window.location.pathname = '/pages/login'
-    // }
+    var user = JSON.parse(localStorage.getItem('user'))
+    if (user === null) {
+        window.location.pathname = '/pages/login'
+    }
 }
 
 var profileImage = null;
@@ -16,6 +16,7 @@ var fatherName = document.getElementById('fatherName')
 var cnicInput = document.getElementById('cnicInput')
 var cityInput = document.getElementById('cityInput')
 var provinceInput = document.getElementById('provinceInput')
+var addressInput = document.getElementById('addressInput')
 
 var registrationForm = document.getElementById('registrationForm')
 
@@ -63,8 +64,18 @@ function browseImage() {
 
 function handleSubmit(e) {
     e.preventDefault()
-    
-    var storage = getStorage()
+    var data = {
+        name: {
+            first_name: fName.value,
+            last_name: lName.value,
+        },
+        father_name: fatherName.value,
+        cnic: cnicInput.value,
+        city: cityInput.value,
+        province: provinceInput.value,
+        address: addressInput.value
+    }
+
     var profileRef = Sref(storage, `profileImages/${profileImage.name}`);
     var uploadTask = uploadBytesResumable(profileRef, profileImage);
     uploadTask.on('state_changed',
@@ -79,30 +90,17 @@ function handleSubmit(e) {
             // Handle successful uploads on complete
             // For instance, get the download URL: https://firebasestorage.googleapis.com/...
             getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
-                console.log('File available at', downloadURL);
-                var data = {
-                    first_name: fName.value,
-                    last_name: lName.value,
-                    father_name: fatherName.value,
-                    cnic: cnicInput.value,
-                    profile_image : downloadURL
-                }
 
                 var registrationRef = ref(db, 'registrations')
                 var registetUniqueRef = push(registrationRef)
 
-                set(ref(db,`registrations/${registetUniqueRef.key}`), data)
-                .then(res => {
-                    alert('data added successfully')
-                })
-                .catch(err => {
-                    console.error("error", err)
-                })
-
-
-
-
-
+                set(ref(db, `registrations/${registetUniqueRef.key}`), { ...data, profileImage: downloadURL })
+                    .then(res => {
+                        alert('Form Submitted')
+                    })
+                    .catch(err => {
+                        console.error("error", err)
+                    })
             });
         }
     );

@@ -1,5 +1,16 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.6.0/firebase-app.js";
-import { getDatabase, set, ref, get, child, onChildAdded, push } from "https://www.gstatic.com/firebasejs/10.6.0/firebase-database.js";
+import {
+    getDatabase,
+    set,
+    ref,
+    get,
+    child,
+    onChildAdded,
+    push,
+    query,
+    equalTo,
+    orderByChild
+} from "https://www.gstatic.com/firebasejs/10.6.0/firebase-database.js";
 import { getStorage, ref as Sref, uploadBytesResumable, getDownloadURL } from "https://www.gstatic.com/firebasejs/10.6.0/firebase-storage.js";
 import { 
     getAuth,
@@ -27,7 +38,7 @@ const app = initializeApp(firebaseConfig);
 
 var auth = getAuth(app)
 var db = getDatabase(app)
-// var storage = getStorage();
+var storage = getStorage();
 var googleProvider = new GoogleAuthProvider()
 var githubProvider = new GithubAuthProvider()
 
@@ -35,7 +46,7 @@ var githubProvider = new GithubAuthProvider()
 export {
     auth,
     db,
-    getStorage,
+    storage,
     createUserWithEmailAndPassword,
     signInWithEmailAndPassword,
     sendPasswordResetEmail,
@@ -50,5 +61,8 @@ export {
     Sref,
     uploadBytesResumable,
     getDownloadURL,
-    push
+    push,
+    query,
+    equalTo,
+    orderByChild
 }
