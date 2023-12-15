@@ -1,0 +1,33 @@
+.student-form-container{
+    width: 100%;
+}
+.student-form-container h1{
+    text-align: center;
+    text-transform: capitalize;
+    margin-bottom: 20px;
+}
+.student-form-container
+.upload{
+    width: 150px;
+    height: 150px;
+    border: 2px dashed grey;
+    border-radius: 15px;
+    position: relative;
+}
+.student-form-container
+.upload img{
+    width: 100%;
+    height: 100%;
+    border-radius: 15px;
+    object-fit: cover;
+}
+.student-form-container
+.upload
+button.browse-btn{
+    border: 0;
+    border-radius: 5px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+}
