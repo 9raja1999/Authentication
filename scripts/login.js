@@ -4,7 +4,7 @@ import {
     sendPasswordResetEmail,
     signInWithPopup,
     googleProvider,
-    githubProvider
+    githubProvider,
 } from '../firebase/firebaseConfig.js'
 
 

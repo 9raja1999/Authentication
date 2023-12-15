@@ -6,21 +6,90 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="styles/dashboard.css">
     <title>Dashboard</title>
 </head>
 
 <body>
     <div class="container">
         <div class="row">
-            <div class="col-12 col-md-6 m-auto">
-                <div class="authContainer">
-                    <h1>DASHBOARD</h1>
+            <div class="col-12 col-md-12">
+                <div class="student-form-container">
+                    <h1>Registrattion form</h1>
+                    <div id="image-display" class="upload mb-3">
+                        <button id="browse-btn" class="browse-btn">browse</button>
+                    </div>
+                    <form id="registrationForm">
+                        <div class="row">
+                            <div class="col-12 col-md-6">
+                                <div class="mb-3">
+                                    <label for="fName" class="form-label">First Name</label>
+                                    <input type="text" class="form-control" id="fName" placeholder="First name">
+                                </div>
+                            </div>
+                            <div class="col-12 col-md-6">
+                                <div class="mb-3">
+                                    <label for="lName" class="form-label">Last Name</label>
+                                    <input type="text" class="form-control" id="lName" placeholder="Last name">
+                                </div>
+                            </div>
+                            <div class="col-12 col-md-6">
+                                <div class="mb-3">
+                                    <label for="fatherName" class="form-label">Father Name</label>
+                                    <input type="text" class="form-control" id="fatherName" placeholder="Father name">
+                                </div>
+                            </div>
+                            <div class="col-12 col-md-6">
+                                <div class="mb-3">
+                                    <label for="cnicInput" class="form-label">CNIC</label>
+                                    <input type="text" class="form-control" id="cnicInput" placeholder="CNIC number">
+                                </div>
+                            </div>
+                            <div class="col-12 col-md-6">
+                                <div class="mb-3">
+                                    <label for="cityInput" class="form-label">City</label>
+                                    <select class="form-select" aria-label="Default select example" id="cityInput">
+                                        <option selected>Open this select city</option>
+                                        <option value="karachi">Karachi</option>
+                                        <option value="islamabad">Islamabad</option>
+                                        <option value="peshawar">Peshawar</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-12 col-md-6">
+                                <div class="mb-3">
+                                    <label for="provinceInput" class="form-label">Province</label>
+                                    <select class="form-select" aria-label="Default select example" id="provinceInput">
+                                        <option selected>Open this select province</option>
+                                        <option value="sindh">Sindh</option>
+                                        <option value="punjab">Punjab</option>
+                                        <option value="balochistan">Balochistan</option>
+                                        <option value="kpk">KPK</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-12 col-md-12">
+                                <div class="mb-3">
+                                    <label for="addressInput" class="form-label">Address</label>
+                                    <input type="text" class="form-control" id="addressInput" placeholder="address">
+                                </div>
+                            </div>
+                            <div class="col-12 col-md-12">
+                                <button class="btn btn-primary w-100" type="submit">SUBMIT</button>
+                            </div>
+                        </div>
+                    </form>
+
+
+
+
+
                 </div>
             </div>
         </div>
     </div>
 
-    <script src="script.js"></script>
+    <script type="module" src="script.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
         crossorigin="anonymous"></script>
